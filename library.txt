@@ -1,0 +1,43 @@
+> db.book.find().pretty()
+{
+	"_id" : ObjectId("58ed5ba3b901d64390ecbc25"),
+	"ISBN" : 1001,
+	"author" : "John",
+	"tags" : [
+		"WEB",
+		"NODEJS",
+		"MongoDB"
+	],
+	"borrow" : [
+		{
+			"is_borrow" : true,
+			"return_date" : "2017-04-19",
+			"student": "Terry"
+		}
+	]
+}
+{
+	"_id" : ObjectId("58ed5c10b901d64390ecbc26"),
+	"ISBN" : 1002,
+	"author" : "David",
+	"tags" : [
+		"Tag1",
+		"Tag2",
+		"Tag3"
+	]
+}
+
+> db.book.createIndex({"ISBN": 1})
+{
+	"createdCollectionAutomatically" : false,
+	"numIndexesBefore" : 1,
+	"numIndexesAfter" : 2,
+	"ok" : 1
+}
+> db.book.createIndex({"borrow.student": 1})
+{
+	"createdCollectionAutomatically" : false,
+	"numIndexesBefore" : 2,
+	"numIndexesAfter" : 3,
+	"ok" : 1
+}

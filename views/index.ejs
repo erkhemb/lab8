@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+</head>
+
+<body>
+  <h1>Add location:</h1>
+  <hr>
+  <form action="/add" method="POST">
+    <input type="hidden" name="id" value="">
+    <% if (errors) { %>
+      <p style="color: red;">required!</p>
+      <% } %>
+        <label>Name:</label><input type="text" name="name">
+        <br/>
+        <label>Category:</label><input type="text" name="category">
+        <br/>
+        <label>Longitude:</label><input type="text" name="lon">
+        <br/>
+        <label>Latitude:</label><input type="text" name="lat">
+
+        <input type="submit" value="Add">
+  </form>
+
+  <h1>List</h1>
+  <hr/>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category/th>
+          <th>Longitude</th>
+          <th>Latitude</th>
+          <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(var i=0; i<results.length; i++) { %>
+        <tr>
+          <td>
+            <%= results[i].name %>
+          </td>
+          <td>
+            <%= results[i].category %>
+          </td>
+          <td>
+            <%= results[i].lon %>
+          </td>
+          <td>
+            <%= results[i].lat %>
+          </td>
+          <td><a href='/update/<%= results[i]._id %>'>UPDATE</a></td>
+          <td><a href="/delete/<%= results[i]._id %>"> DELETE </a></td>
+        </tr>
+        <% } %>
+    </tbody>
+  </table>
+</body>
+
+<style>
+  body {
+    line-height: 2em;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 40%;
+  }
+
+  th {
+    height: 50px;
+  }
+
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2
+  }
+
+  th,
+  td {
+    padding: 15px;
+    text-align: left;
+  }
+
+  table,
+  th,
+  td {
+    border: 1px solid black;
+  }
+</style>
+
+</html>

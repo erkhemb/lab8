@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+</head>
+
+<body>
+  <h1>Update location:</h1>
+  <hr>
+  <form action="/update" method="POST">
+    <input type="hidden" name="id" value="<%= location._id %>">
+    <% if (errors) { %>
+      <p style="color: red;">required!</p>
+      <% } %>
+        <label>Name:</label><input type="text" name="name" value="<%= location.name %>">
+        <br/>
+        <label>Category:</label><input type="text" name="category" value="<%= location.category %>">
+        <br/>
+        <label>Longitude:</label><input type="text" name="lon" value="<%= location.lon %>">
+        <br/>
+        <label>Latitude:</label><input type="text" name="lat" value="<%= location.lat %>">
+
+        <input type="submit" value="Update">
+  </form>
+
+</body>
+
+<style>
+  body {
+    line-height: 2em;
+  }
+</style>
+
+</html>
